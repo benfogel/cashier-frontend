@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cashier-frontend-deployment
+  namespace: cashier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cashier-frontend
+  template:
+    metadata:
+      labels:
+        app: cashier-frontend
+        type: frontend
+    spec:
+      containers:
+      - image: gcr.io/anthos-bare-metal-lab-1/clerk-frontend:v0.1
+        name: frontend
+        resources:
+          limits:
+            cpu: 750m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cashier-frontend
+  namespace: cashier
+spec:
+  ports:
+  - name: application
+    port: 8080
+    protocol: TCP
+    targetPort: 4173
+  selector:
+    app: cashier-frontend
+  type: ClusterIP
+  

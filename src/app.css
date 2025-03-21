@@ -1,0 +1,9 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: #212A3E;
+    font-family: 'DM Sans', sans-serif;
+}
