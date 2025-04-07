@@ -15,7 +15,7 @@ spec:
         type: frontend
     spec:
       containers:
-      - image: gcr.io/anthos-bare-metal-lab-1/clerk-frontend:v0.1
+      - image: gcr.io/anthos-bare-metal-lab-1/clerk-frontend:v0.12
         name: frontend
         resources:
           limits:
